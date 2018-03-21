@@ -1,0 +1,33 @@
+package:
+  name: pyrdl
+  version: "1.1"
+
+source:
+  git_url: https://github.com/rareylab/RingDecomposerLib.git
+  git_rev: v1.1
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+    - cython
+  run:
+    - python
+
+test:
+  source_files:
+    - 'build/*'
+
+  imports:
+    - py_rdl
+
+  commands:
+    - cd build [unix]
+    - make test [unix]
+
+about:
+  home: https://github.com/rareylab/RingDecomposerLib
+  license: BSD-3-Clause
+  summary: RingDecomposerLib for calculation of Unique Ring Families (URFs) and other cycle bases (Relevant Cycles (RC), Smallest Set of Smallest Rings (SSSR)).
