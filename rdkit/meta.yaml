@@ -1,0 +1,46 @@
+package:
+  name: rdkit
+  version: "__conda_version__"
+
+source:
+  git_url: git@github.com:skrsna/rdkit.git
+  git_tag:
+  patches:
+    - rdpaths.patch
+    - rdconfig.patch [win]
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - cmake
+    - requests
+    - boost ==1.56.0 [unix]
+    - boost ==1.56.0 [win and py27]
+    - boost ==1.56.0 [win and py34]
+    - boost ==1.59.0 [win and py35]
+    - python
+    - numpy ==1.13.1
+    - pillow
+    - freetype
+    - nox [unix]
+    - cairo [unix]
+    - eigen
+    - pandas
+  run:
+    - boost ==1.56.0 [unix]
+    - boost ==1.56.0 [win and py27]
+    - boost ==1.56.0 [win and py34]
+    - boost ==1.59.0 [win and py35]
+    - cairo [unix]
+    - python
+    - numpy ==1.13.1
+
+test:
+  imports:
+    - rdkit
+
+about:
+  home: http://rdkit.org
+  license: BSD
