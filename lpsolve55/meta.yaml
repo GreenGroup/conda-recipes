@@ -1,12 +1,12 @@
 package:
     name: lpsolve55
-    version: 5.5
+    version: 5.5.1
 
 source:
     git_url: https://github.com/amarkpayne/lp_solve_python_3x.git
 
 build:
-    number: 2
+    number: 3
 
 requirements:
     build:
