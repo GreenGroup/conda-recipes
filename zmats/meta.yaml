@@ -1,0 +1,37 @@
+# This file created for conda-build 3.10.9
+#
+# ------------------------------------------------
+
+package:
+  name: zmats
+  version: '0.1.0'
+
+source:
+  git_url: https://github.com/ReactionMechanismGenerator/zmats.git
+
+build:
+  noarch: generic
+
+requirements:
+  build:
+    - python
+  run:
+    - numpy
+    - python
+    - qcelemental
+    - rmg>=3.0.0
+
+test:
+  imports:
+    - zmats
+
+about:
+  home: https://github.com/ReactionMechanismGenerator/zmats
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'A Z-matrix module written in Python'
+
+extra:
+  recipe-maintainers:
+    - alongd
