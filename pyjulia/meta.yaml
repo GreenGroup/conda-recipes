@@ -1,4 +1,4 @@
-{% set version = "0.5.1" %}
+{% set version = "0.5.3" %}
 {% set name = "julia" %}
 
 package:
@@ -8,22 +8,22 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9660819b4326d107009000bb0d283634a9b19e5de70d89680fb06127121d05d6
+  sha256: b13207125709fdba069a25c4e54ff366f0bc308807b2aa0f3b66924101799c58
 
 requirements:
   build:
-    - python>=3
+    - python>=3.7.1
     - pip
-    - julia>=1.1
+    - julia>=1.1.1
   run:
-    - python>=3
-    - julia>=1.1
+    - python>=3.7.1
+    - julia>=1.1.1
 
 test:
-  commands:
-    - python-jl -c 'import julia; julia.Julia()'
   imports:
     - julia
+  commands:
+    - python -c "from julia.api import Julia; jl = Julia(compiled_modules=False); from julia import Main"
 
 about:
   home: https://github.com/JuliaPy/pyjulia
