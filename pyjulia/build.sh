@@ -1,13 +1,19 @@
 python -m pip install --no-deps --ignore-installed .
-julia -e "using Pkg; ENV[\"PYTHON\"]=string(ENV[\"PREFIX\"],\"/bin/python\"); println(ENV[\"PYTHON\"]); Pkg.build(\"PyCall\");"
+
 python -c "import julia; julia.install()"
 
-var=$(awk 'FNR==1{print $0 "3";}' $(which python-jl))
+var="const ROOTENV = \"${PREFIX}\""
+
 unamestr=$(uname)
 if [[ "$unamestr" == "Linux" ]]; then
-    sed -i 's|bin/python|bin/python3|g' $(which python-jl)
-    #sed -i "1s|.*|$var|" $(which python-jl) #append 3 so python-jl works after linking
+    sed -i 's|bin/python|bin/python3|g' $(which python-jl) #use python3 rather than python so python-jl works after linking
+   for d in ${PREFIX}/share/julia/site/packages/Conda/*/ ; do
+       sed -i "1s/.*/$var/" ${d}/deps/deps.jl
+    done
 elif [[ "$unamestr" == "Darwin" ]]; then
-    sed -i ".bak" 's|bin/python|bin/python3|g' $(which python-jl)
-    #sed -i ".bak" "1s|.*|$var|" $(which python-jl) #append 3 so python-jl works after linking
+    sed -i ".bak" 's|bin/python|bin/python3|g' $(which python-jl) #use python3 rather than python so python-jl works after linking
+    for d in ${PREFIX}/share/julia/site/packages/Conda/*/ ; do
+       echo $d
+       sed -i ".bak" "1s|.*|$var|" ${d}/deps/deps.jl
+    done
 fi
