@@ -1,0 +1,25 @@
+# This file created by conda-build 3.19.2
+# meta.yaml template originally from:
+# /Users/runner/runners/2.166.4/work/1/s/recipe, last modified Mon Apr 27 16:06:50 2020
+# ------------------------------------------------
+
+package:
+    name: julia-lang
+    version: 1.0.0
+build:
+    number: '1'
+    string: rmg_1
+requirements:
+    build:
+        - julia >=1
+    host:
+        - julia >=1   
+    run:
+        - julia >=1   
+about:
+    summary: A fix for the conda-forge julia version
+extra:
+    copy_test_source_files: true
+    final: true
+    recipe-maintainers:
+        - mjohnson541
