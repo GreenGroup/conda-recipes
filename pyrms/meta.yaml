@@ -22,12 +22,10 @@ requirements:
     - diffeqpy
     - pyjulia
     - rmg>=3.0.0
-    - nose
     - rdkit
     - pydot
     - matplotlib
     - pyyaml
-    - gcc>=7
 
 test:
   imports:
