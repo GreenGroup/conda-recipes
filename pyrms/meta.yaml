@@ -6,8 +6,9 @@ package:
   version: {{ version }}
 
 source:
-  git_rev: installfcn
-  git_url: https://github.com/ReactionMechanismGenerator/pyrms.git
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 16912d097d2db4a0216eb10c92ea20f5f15ca37e51cb8485c85fdd8a5399a5d4
 
 build:
     number: '1'
