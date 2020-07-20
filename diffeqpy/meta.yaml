@@ -16,21 +16,21 @@ build:
 
 requirements:
   build:
-    - python>=3.7.1
+    - python=3.7
     - pip
-    - julia-lang
+    - julia>1
     - pyjulia
   run:
-    - python>=3.7.1
-    - julia-lang
+    - python=3.7
+    - julia>1
     - pyjulia
 
 test:
   imports:
     - diffeqpy
-  commands:
-    - python -c "from julia.api import Julia; jl = Julia(compiled_modules=False); from diffeqpy import de"
-    - python-jl -c "from diffeqpy import de"
+  #commands:
+  #  - python -c "from julia.api import Julia; jl = Julia(compiled_modules=False); from diffeqpy import de"
+  #  - python-jl -c "from diffeqpy import de"
 
 about:
   home: https://github.com/SciML/diffeqpy
