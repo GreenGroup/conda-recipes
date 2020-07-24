@@ -25,7 +25,6 @@ else
         echo "unset JULIA_DEPOT_PATH" >> $DEACTIVATE_ENV
 fi
 
-julia -e "println(Base.DEPOT_PATH)"
 
 set -e
 VERSION="1.4.2"
@@ -84,7 +83,7 @@ case $(uname) in
     echo "$BASEURL/linux/$ARCH/$JULIANAME-$SUFFIX.tar.gz"
     cd ${PREFIX}/share/julia/site
     curl -L "$BASEURL/linux/$ARCH/$JULIANAME-$SUFFIX.tar.gz" | tar -xzs
-    sudo ln -s $PWD/julia-*/bin/julia ${PREFIX}/bin/julia
+    ln -s $PWD/julia-*/bin/julia ${PREFIX}/bin/julia
     cd ${PREFIX}
     ;;
   Darwin)
