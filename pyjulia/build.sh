@@ -21,8 +21,6 @@ else
         echo "unset JULIA_DEPOT_PATH" >> "$DEACTIVATE_ENV"
 fi
 
-julia -e "println(Base.DEPOT_PATH)"
-
 mkdir $PREFIX/share/julia/site
 mkdir $PREFIX/share/julia/site/registries 
 mkdir $PREFIX/share/julia/site/registries/General
