@@ -9,12 +9,12 @@ ACTIVATE_ENV="${PREFIX}/etc/conda/activate.d/env_vars.sh"
 DEACTIVATE_ENV="${PREFIX}/etc/conda/deactivate.d/env_vars.sh"
 
 if [ -f "$ACTIVATE_ENV" ]; then
-        echo 'export JULIA_DEPOT_PATH="${PREFIX}/share/julia/site"' >> $ACTIVATE_ENV
+        echo "export JULIA_DEPOT_PATH=\"${PREFIX}/share/julia/site\"" >> $ACTIVATE_ENV
 else
         mkdir -p ${PREFIX}/etc/conda/activate.d
         touch ${PREFIX}/etc/conda/activate.d/env_vars.sh
         echo '#!/bin/sh' >> $ACTIVATE_ENV
-        echo 'export JULIA_DEPOT_PATH="${PREFIX}/share/julia/site"' >> $ACTIVATE_ENV
+        echo "export JULIA_DEPOT_PATH=\"${PREFIX}/share/julia/site\"" >> $ACTIVATE_ENV
 fi
 if [ -f "$DEACTIVATE_ENV" ]; then
         echo "unset JULIA_DEPOT_PATH" >> $DEACTIVATE_ENV
@@ -25,7 +25,7 @@ else
         echo "unset JULIA_DEPOT_PATH" >> $DEACTIVATE_ENV
 fi
 
-
+#Modified from the Julia developers' julia-install.sh script
 set -e
 VERSION="1.4.2"
 
