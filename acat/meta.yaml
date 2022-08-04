@@ -1,0 +1,35 @@
+{% set version = "1.4.6" %}
+{% set name = "acat" %}
+
+package:
+  name: acat
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: d3a8929d5c66a80cc17469c3d82991182d566ad53c5b9d427d4f94ce2bcf73e5
+
+build:
+    number: '1'
+    string: acat_1
+
+requirements:
+  build:
+    - python>=3.6
+    - pip
+  run:
+    - python>=3.6
+    - networkx>=2.4
+    - ase
+    - asap3
+
+test:
+  imports:
+    - acat
+
+about:
+  home: https://gitlab.com/asm-dtu/acat
+  license: GNU LESSER GENERAL PUBLIC LICENSE
+  summary: "Alloy Catalysis Automated Toolkit"
+
