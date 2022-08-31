@@ -10,17 +10,13 @@ source:
   sha256: 3cc9304ec7fbe7d7af9184ecd34b7292913aa1377d6da2d304b1dd3fd8c02181
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
   number: 0
+  skip: true # [win]
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
-    - pip
-    - python ==3.8
-    - cython
-    - numpy >=1.14.0
-    - scipy >=1.1.10
+    - {{ compiler('c') }}
   host:
     - pip
     - python ==3.8
@@ -33,8 +29,8 @@ requirements:
     - jax >=0.2.3
     - jaxlib >=0.1.56
     - scipy >=1.1.10
-    - cython
-    - numpy >=1.14.0
+    - {{ pin_compatible('numpy') }}
+
 test:
   imports:
     - sella
