@@ -1,0 +1,51 @@
+{% set name = "sella" %}
+{% set version = "2.2.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/Sella-{{ version }}.tar.gz
+  sha256: 3cc9304ec7fbe7d7af9184ecd34b7292913aa1377d6da2d304b1dd3fd8c02181
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  build:
+    - pip
+    - python ==3.8
+    - cython
+    - numpy >=1.14.0
+    - scipy >=1.1.10
+  host:
+    - pip
+    - python ==3.8
+    - cython
+    - numpy >=1.14.0
+    - scipy >=1.1.10
+  run:
+    - ase
+    - python ==3.8
+    - jax >=0.2.3
+    - jaxlib >=0.1.56
+    - scipy >=1.1.10
+    - cython
+    - numpy >=1.14.0
+test:
+  imports:
+    - sella
+
+about:
+  home: https://github.com/zadorlab/sella
+  summary: A Python software package for saddle point optimization and minimization of atomic systems. 
+  license: LGPL-3.0
+  license_file:
+    - LICENSE
+
+extra:
+  recipe-maintainers:
+    - mjohnson541
