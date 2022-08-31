@@ -19,13 +19,13 @@ requirements:
     - {{ compiler('c') }}
   host:
     - pip
-    - python ==3.8
+    - python {{ python }}
     - cython
     - numpy >=1.14.0
     - scipy >=1.1.10
   run:
     - ase
-    - python ==3.8
+    - python {{ python }}
     - jax >=0.2.3
     - jaxlib >=0.1.56
     - scipy >=1.1.10
