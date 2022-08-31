@@ -21,7 +21,7 @@ requirements:
     - pip
     - python {{ python }}
     - cython
-    - numpy >=1.14.0
+    - {{ pin_compatible('numpy') }}
     - scipy >=1.1.10
   run:
     - ase

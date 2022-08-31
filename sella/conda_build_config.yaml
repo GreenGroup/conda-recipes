@@ -1,7 +1,5 @@
 python:
   - 3.8
-numpy:
-  - 1.19
 
 # Specifically for Travis build. Should change if building locally.
 CONDA_BUILD_SYSROOT:
