@@ -1,0 +1,41 @@
+{% set version = "1.1.0" %}
+{% set name = "diffeqpy" %}
+
+package:
+  name: diffeqpy
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 0ff315bf3d4345a83dc623b614e39c8365302df1cc9d36dcb8ce782d926f255b
+
+build:
+    number: '1'
+    string: rmg_1
+
+requirements:
+  build:
+    - python=3.7
+    - pip
+    - julia>1
+    - pyjulia
+  run:
+    - python=3.7
+    - julia>1
+    - pyjulia
+
+test:
+  imports:
+    - diffeqpy
+  #commands:
+  #  - python -c "from julia.api import Julia; jl = Julia(compiled_modules=False); from diffeqpy import de"
+  #  - python-jl -c "from diffeqpy import de"
+
+about:
+  home: https://github.com/SciML/diffeqpy
+  license: MIT
+  license_file: 'LICENSE.md'
+  license_family: MIT
+  summary: "python interface to julia DifferentialEquations"
+
