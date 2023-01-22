@@ -5,7 +5,7 @@
 
 package:
     name: julia
-    version: 1.4.2
+    version: 1.6.7
 build:
     number: '1'
     string: rmg_1 
