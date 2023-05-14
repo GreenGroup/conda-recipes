@@ -1,4 +1,4 @@
-{% set version = "0.1.2" %}
+{% set version = "1.0.2" %}
 {% set name = "pyrms" %}
 
 package:
@@ -6,9 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d3a8929d5c66a80cc17469c3d82991182d566ad53c5b9d427d4f94ce2bcf73e5
+  git_rev: main
+  git_url: https://github.com/ReactionMechanismGenerator/pyrms.git
 
 build:
     number: '1'
