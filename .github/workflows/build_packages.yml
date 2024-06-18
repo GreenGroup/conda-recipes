@@ -45,3 +45,12 @@ jobs:
           conda config --add channels conda-forge
           conda config --add channels rmg
           conda build --token $CONDA_TOKEN --user rmg ${{ matrix.recipe }}
+  result:
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    name: Final Results
+    needs: [build]
+    steps:
+      - run: exit 1
+        # see https://github.com/orgs/community/discussions/26822?sort=new#discussioncomment-8285141
+        if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'skipped') }}
